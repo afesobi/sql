@@ -54,7 +54,49 @@ The store wants to keep customer addresses. Propose two architectures for the CU
 **HINT:** search type 1 vs type 2 slowly changing dimensions. 
 
 ```
-Your answer...
+To store customer addresses, we propose two different architectures:
+
+Type 1: Overwriting Changes
+
+A simple structure where the latest address replaces the previous one:
+
+Table: CUSTOMER_ADDRESS
+
+customer_id (Primary Key, Foreign Key from Customer)
+
+address
+
+city
+
+state
+
+zip
+
+In this model, whenever a customer updates their address, the old data is overwritten.
+
+Type 2: Retaining History
+
+A more complex structure that maintains historical address changes:
+
+Table: CUSTOMER_ADDRESS_HISTORY
+
+customer_id (Foreign Key from Customer)
+
+address
+
+city
+
+state
+
+zip
+
+start_date
+
+end_date
+
+With this approach, whenever a customer changes their address, a new record is created with the start_date, and the previous record is updated with an end_date, preserving history.
+
+Type 1 is best when historical data is not needed, whereas Type 2 is essential when tracking address changes over time.
 ```
 
 ***
@@ -182,5 +224,36 @@ Consider, for example, concepts of labour, bias, LLM proliferation, moderating c
 
 
 ```
-Your thoughts...
+Section 4: Ethics in AI and Data Processing
+
+Ethical Issues in "Neural Nets are Just People All the Way Down"
+
+The article by Vicki Boykis explores the ethical complexities surrounding AI, specifically Large Language Models (LLMs). Key ethical concerns include:
+
+Bias in AI Models
+
+AI systems inherit biases from their training data, which reflects societal prejudices.
+
+This perpetuates discrimination in automated decision-making.
+
+Labor and Automation
+
+LLMs rely on vast amounts of data labeled by underpaid human workers.
+
+The ethical issue of exploiting global labor for AI development raises concerns.
+
+Challenges in Moderating AI-Generated Content
+
+AI-generated content can be harmful or misleading.
+
+There is no perfect moderation system, as AI models lack human context and ethics.
+
+AI in Society & Ethical Dilemmas
+
+The rapid growth of LLMs creates a monopoly where only a few corporations control AI development.
+
+Ethical concerns arise about transparency, accessibility, and misinformation.
+
+Conclusion
+While AI provides immense benefits, its ethical implications cannot be ignored. To mitigate bias, labor exploitation, and misinformation, there must be continuous oversight, regulation, and a commitment to ethical AI development. AI is ultimately shaped by human values, and ensuring fairness and accountability remains a shared responsibility
 ```
